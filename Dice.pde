@@ -4,17 +4,19 @@ void setup()
   noLoop();
   size(300, 300);
   background(0);
-  for(int i = 0;i<9;i++){
-  	dic[i]= new Die(i*20,i*50);
-  }
+
 }
 void draw()
 {
-  for(int i = 0;i<9;i++){
-  	  dic[i].roll();
-  	dic[i].show();
-  }
-
+	for(int why=50;why<151;why+=50){
+	int i =0;
+	for(int ex = 0 ; ex<151;ex+=50){
+		dic[i] = new Die(ex,why);
+		dic[i].roll();
+		dic[i].show();
+		i++;
+	}
+}
 }
 void mousePressed()
 {
