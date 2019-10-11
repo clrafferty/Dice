@@ -1,22 +1,32 @@
-Die [] dic = new Die[9];
+Die [] dic = new Die[10000];
+int total= 0;
 void setup()
 {
+	noStroke();
   noLoop();
-  size(300, 300);
-  background(0);
+  size(800, 800);
+  background(97, 156, 250);
 
 }
 void draw()
+
 {
-	for(int why=50;why<151;why+=50){
+	total= 0;
+	 background(97, 156, 250);
+	for(int why=0;why<701;why+=50){
 	int i =0;
-	for(int ex = 0 ; ex<151;ex+=50){
+	for(int ex = 0 ; ex<801;ex+=50){
 		dic[i] = new Die(ex,why);
 		dic[i].roll();
 		dic[i].show();
+		total+=dic[i].val;
 		i++;
+
 	}
 }
+fill(255);
+textSize(20);
+text("the total is " + total,10,790);
 }
 void mousePressed()
 {
@@ -41,7 +51,7 @@ class Die //models one single dice cube
     fill(255);
     rect(xcoord, ycoord, siz, siz, 7);
     if (val%2==1) {
-      fill(0);
+      fill(97, 156, 250);
       ellipse(xcoord+siz/2, ycoord+siz/2, 5, 5);
       if (val>1) {
         ellipse(xcoord + siz/4, ycoord+siz/4, 5, 5);
@@ -52,7 +62,7 @@ class Die //models one single dice cube
         }
       }
     } else {
-      fill(0);
+      fill(97, 156, 250);
       if (val==2) {
         ellipse(xcoord+siz/3, ycoord+siz/2, 5, 5);
         ellipse(xcoord+siz*2/3, ycoord+siz/2, 5, 5);
